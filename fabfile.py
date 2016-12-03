@@ -18,60 +18,6 @@ logging.basicConfig(level=logging.INFO,
                     filename='logs/fab.log',
                     filemode='a')
 
-
-
-@task
-def notebook():
-    """
-    Run an IPython notebook on an AWS server
-    """
-    from IPython.lib.security import passwd
-    command = "ipython notebook --ip=0.0.0.0  --certfile=mycert.pem --NotebookApp.password={} --no-browser".format(passwd())
-    print command
-    run(command)
-
-@task
-def gen_ssl():
-    run("openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.key -out mycert.pem")
-
-
-@task
-def setup():
-    """
-    Task for initial set up of AWS instance.
-    Used AMI modified for Python2.7 https://gist.github.com/AlexJoz/1670baf0b32573ca7923
-    Following commands show other packages/libraries installed while setting up the AMI
-    """
-    connect()
-    sudo("chmod 777 /mnt/") # sometimes the first one will fail due to timeout and in any case this is idempotent
-    sudo("chmod 777 /mnt/")
-    sudo("add-apt-repository ppa:kirillshkrogalev/ffmpeg-next")
-    sudo("apt-get update")
-    sudo("apt-get install -y ffmpeg")
-    run("git clone https://github.com/AKSHAYUBHAT/VisualSearchServer")
-    sudo("pip install fabric")
-    sudo("pip install --upgrade awscli")
-    sudo("pip install --upgrade fabric")
-    sudo("pip install --upgrade flask")
-    sudo("pip install --upgrade ipython")
-    sudo("pip install --upgrade jupyter")
-    sudo("apt-get install -y python-scipy")
-    sudo("apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran")
-    sudo("pip install --upgrade nearpy")
-
-
-
-@task
-def connect():
-    """
-    Creates connect.sh for the current host
-    :return:
-    """
-    fh = open("connect.sh",'w')
-    fh.write("#!/bin/bash\n"+"ssh -i "+env.key_filename+" "+"ubuntu"+"@"+HOST+"\n")
-    fh.close()
-
-
 @task
 def server():
     """
@@ -92,6 +38,7 @@ def demo_fashion():
     local('python server.py &')
     local('tail -f logs/server.log')
 
+
 @task
 def demo_nyc():
     """
@@ -103,9 +50,6 @@ def demo_nyc():
     local('echo "\nINDEX_PATH=\'/mnt/nyc_index/\'" >> settings.py')
     local('python server.py &')
     local('tail -f logs/server.log')
-
-
-
 
 
 @task
