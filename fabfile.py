@@ -1,7 +1,7 @@
 import os,sys,logging,time,shutil
 from fabric.state import env
 from fabric.api import env,local,run,sudo,put,cd,lcd,puts,task,get,hide
-from settings import BUCKET_NAME,DATA_PATH,INDEX_PATH
+from settings import DATA_PATH,INDEX_PATH
 try:
     import inception
 except ImportError:

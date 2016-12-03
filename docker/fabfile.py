@@ -50,5 +50,5 @@ def test():
 
 @task
 def server():
-    local('open http://127.0.0.1:8111')
+    local('open http://127.0.0.1:9000')
     local('docker exec -u="root" -it $(docker ps -l -q)  fab server')
