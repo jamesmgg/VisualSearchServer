@@ -35,7 +35,7 @@ def rm():
 
 @task
 def start():
-    local('docker run -p 127.0.0.1:8000:8000 -d -t akshayubhat-vs')
+    local('docker run -p 127.0.0.1:9000:9000 -p 127.0.0.1:8888:8888 -d -t akshayubhat-vs')
 
 
 @task

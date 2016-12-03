@@ -7,5 +7,5 @@ CONFIG_PATH = __file__.split('settings.py')[0]
 
 BUCKET_NAME = "aub3visualsearch"
 PREFIX = "nyc"
-INDEX_PATH = "/mnt/nyc_index/"
-DATA_PATH ="/mnt/nyc_images/"
+INDEX_PATH = "/root/tests/index/"
+DATA_PATH = "/root/tests/images/"
