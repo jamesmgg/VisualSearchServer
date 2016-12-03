@@ -2,7 +2,7 @@ import time,glob,re,sys,logging,os,tempfile
 import numpy as np
 import tensorflow as tf
 from scipy import spatial
-from settings import AWS,INDEX_PATH,CONFIG_PATH,DATA_PATH,BUCKET_NAME,PREFIX
+from settings import AWS,INDEX_PATH,CONFIG_PATH,DATA_PATH
 try:
     from settings import DEMO
 except ImportError:
@@ -145,7 +145,7 @@ def get_batch(path,batch_size = 1000):
     yield image_data
 
 
-def store_index(features,files,count,index_dir,bucket_name=BUCKET_NAME,prefix=PREFIX):
+def store_index(features,files,count,index_dir):
     feat_fname = "{}/{}.feats_pool3.npy".format(index_dir,count)
     files_fname = "{}/{}.files".format(index_dir,count)
     logging.info("storing in {}".format(index_dir))
