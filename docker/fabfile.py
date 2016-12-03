@@ -19,6 +19,10 @@ env.hosts = [ec2_HOST,]
 def build():
     local('docker build --build-arg CACHE_DATE=$(date +%Y-%m-%d:%H:%M:%S) -t akshayubhat-vs .')
 
+@task
+def build_gpu():
+    local('docker build --build-arg CACHE_DATE=$(date +%Y-%m-%d:%H:%M:%S) -t akshayubhat-vsgpu .')
+
 
 @task
 def rm():

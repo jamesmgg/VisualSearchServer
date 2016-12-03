@@ -15,45 +15,31 @@ Nearest neighbor search can be performed in an approximate manner using nearpy (
 ![UI Screenshot](appcode/static/alpha3.png "Alpha Screenshot Female Fashion")
 ![UI Screenshot](appcode/static/alpha4.png "Alpha Screenshot NYC, Streetview & Dashcam")
 
-####Running code on AWS
+####Running code using docker and nvidia-docker
 
-The easiest way to use this project is to launch "ami-b80f0ad2"  in AWS North Virginia (us-east-1) region.
-**"ami-3eb0dd29" is new AMI with latest version of Tensorflow, derived from another public image which I found on AWS.
-It offers significant speedup due to improvements in Tensorflow, however I havent tested it thoroughly.**
-Make sure that you keep port 9000 open and use "g2.2xlarge" instance type.
-We strongly recommended using IAM roles, rather than manually entering credentials. 
-However you might need to configure AWS region "us-east-1" manually.
-Once logged in run following commands.
- ``` 
-  cd VisualSearchServer
-  git pull
-  sudo chmod 777 /mnt/
-  aws configure   
+This repo now contains a dockerfile in the /docker folder for both gpu and cpu use.
+To build the docker image edit the fabfile in docker folder by specifying name for the image and run.
+``` 
+fab buid # to build the docker image (you can then edit and push to your docker registry)
+fab start # to start jupyter notebook 
+fab server # to start retrieval server
+fab rm # to stop and remove all data associated with the image
 ```
 
 ####Index images
 The code provides a single index operation to index images using Pool3 features.
 Store all images in a single directory, specify path to that directory. 
-Specify path to a directory for storing indexes, an S3 bucket and prefix to backup computed features.   
+Specify path to a directory for storing indexes.   
 ```
 # edit settings.py
-BUCKET_NAME = "aub3visualsearch"
-PREFIX = "nyc"
 INDEX_PATH = "/mnt/nyc_index/" 
 DATA_PATH ="/mnt/nyc_images/" # /mnt/ is mounted with instance store on AWS
 ```
-
 To perform indexing run following. 
 ```
   cd ~/VisualSearchServer/
   fab index &
   tail -f logs/worker.log
-```
-
-####Run retrieval server  
-``` 
-python server.py &  
-tail -f logs/server.log
 ```
 
 ####Run demo with precomputed index  
