@@ -153,10 +153,6 @@ def store_index(features,files,count,index_dir,bucket_name=BUCKET_NAME,prefix=PR
         np.save(feats,np.array(features))
     with open(files_fname,'w') as filelist:
         filelist.write("\n".join(files))
-    if AWS:
-        os.system('aws s3 cp {} s3://{}/{}_index/ --region "us-east-1"'.format(feat_fname,bucket_name,prefix))
-        os.system('aws s3 cp {} s3://{}/{}_index/ --region "us-east-1"'.format(files_fname,bucket_name,prefix))
-        logging.info("uploaded {} and {} to s3://{}/{}_index/ ".format(feat_fname,files_fname,bucket_name,prefix))
 
 def extract_features(image_data,sess):
     pool3 = sess.graph.get_tensor_by_name('incept/pool_3:0')
