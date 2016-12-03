@@ -75,11 +75,11 @@ You can then  use browser to access web UI on port 9000 of the instance DNS/IP.
 
 #### Following libraries & templates are used:
 1. https://almsaeedstudio.com/
-2. http://fabricjs.com/kitchensink/
+2. http://fabricjs.com/kitchensink
 3. https://github.com/karpathy/convnetjs
 4. https://www.tensorflow.org/ 
-5. http://nearpy.io/
+5. http://pixelogik.github.io/NearPy/
 
    
 License:    
-Copyright 2015, Cornell University. 
+I plan to switch to an Apache 2.0 license soon, staty tuned. Please contact me if you have any questions in the meantime. 
