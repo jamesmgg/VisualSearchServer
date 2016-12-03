@@ -17,11 +17,7 @@ env.hosts = [ec2_HOST,]
 
 @task
 def build():
-    local('docker build --build-arg CACHE_DATE=$(date +%Y-%m-%d:%H:%M:%S) -t akshayubhat-vs .')
-
-@task
-def build_gpu():
-    local('docker build --build-arg CACHE_DATE=$(date +%Y-%m-%d:%H:%M:%S) -t akshayubhat-vsgpu .')
+    local('docker build --build-arg CACHE_DATE=$(date +%Y-%m-%d:%H:%M:%S) -t visualsearchserver .')
 
 
 @task
@@ -39,7 +35,7 @@ def rm():
 
 @task
 def start():
-    local('docker run -p 127.0.0.1:9000:9000 -p 127.0.0.1:8888:8888 -d -t akshayubhat-vs')
+    local('docker run -p 127.0.0.1:9000:9000 -p 127.0.0.1:8888:8888 -d -t visualsearchserver')
 
 
 @task
