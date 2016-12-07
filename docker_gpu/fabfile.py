@@ -51,7 +51,6 @@ def test():
 @task
 def server():
     test()
-    local('open http://127.0.0.1:9000')
     local('nvidia-docker exec -u="root" -it $(docker ps -l -q)  fab server')
 
 
