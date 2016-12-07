@@ -17,6 +17,11 @@ Nearest neighbor search can be performed in an approximate manner using nearpy (
 
 ####Running code using docker and nvidia-docker
 
+Visual Search Server GPU image created using nvidia-docker is [available on dockerhub](https://hub.docker.com/r/akshayubhat/visualsearchserver/).
+```
+docker pull akshayubhat/visualsearchserver
+```
+
 This repo now contains a dockerfile in the /docker folder for both gpu and cpu use.
 To build the docker image edit the fabfile in docker folder by specifying name for the image and run.
 ``` 
