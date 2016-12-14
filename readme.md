@@ -1,5 +1,6 @@
-Visual Search Server
+Visual Search Server [![](https://images.microbadger.com/badges/image/akshayubhat/visualsearchserver.svg)](https://microbadger.com/images/akshayubhat/visualsearchserver "Get your own image badge on microbadger.com")
 ===============
+
 
 A simple implementation of Visual Search using TensorFlow, InceptionV3 model and AWS GPU instances.
 
