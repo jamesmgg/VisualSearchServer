@@ -1,7 +1,7 @@
 Visual Search Server [![](https://images.microbadger.com/badges/image/akshayubhat/visualsearchserver.svg)](https://microbadger.com/images/akshayubhat/visualsearchserver "Get your own image badge on microbadger.com")
 ===============
 
-** While the code in this repo works. As of Jan 2017 I am now working on Deep Video Analytics which provides a more complete set of functionality for video and image analytics in addition to all the features provided by this repository. You can find the [Deep Video Analytics repo here](https://github.com/akshayubhat/DeepVideoAnalytics).**
+**While the code in this repo works. As of Jan 2017 I am now working on Deep Video Analytics which provides a more complete set of functionality for video and image analytics in addition to all the features provided by this repository. You can find the [Deep Video Analytics repo here](https://github.com/akshayubhat/DeepVideoAnalytics).**
 
 A simple implementation of Visual Search using TensorFlow, InceptionV3 model and AWS GPU instances.
 This codebase implements a simple visual indexing and search system, using features derived from Google's inception 
