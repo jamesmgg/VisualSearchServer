@@ -26,7 +26,7 @@ docker pull akshayubhat/visualsearchserver
 This repo now contains a dockerfile in the /docker folder for both gpu and cpu use.
 To build the docker image edit the fabfile in docker folder by specifying name for the image and run.
 ``` 
-fab buid # to build the docker image (you can then edit and push to your docker registry)
+fab build # to build the docker image (you can then edit and push to your docker registry)
 fab start # to start jupyter notebook 
 fab server # to start retrieval server
 fab rm # to stop and remove all data associated with the image
