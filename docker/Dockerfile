@@ -12,7 +12,7 @@ RUN add-apt-repository ppa:kirillshkrogalev/ffmpeg-next && \
 	apt-get clean && \
 	apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y libssl-dev libffi-dev
 RUN pip install --upgrade pip \
                           fabric \
                           jinja \
