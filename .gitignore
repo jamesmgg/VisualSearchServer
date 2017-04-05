@@ -2,3 +2,5 @@
 /connect.sh
 /Resource
 *.log
+out.txt
+*.pyc

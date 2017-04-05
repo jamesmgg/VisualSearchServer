@@ -144,10 +144,18 @@ def get_batch(path,batch_size = 1000):
             image_data = {}
     yield image_data
 
+def store_single_index(features,file,index_dir):
+    feat_fname = "{}/feats_pool3.npy".format(index_dir)
+    files_fname = "{}/files".format(index_dir)
+    logging.info("storing in {}".format(index_dir))
+    with open(feat_fname,'w') as feats:
+        np.save(feats,np.array(features))
+    with open(files_fname,'w') as filelist:
+        filelist.write("\n".join(file))
 
 def store_index(features,files,count,index_dir):
-    feat_fname = "{}/{}.feats_pool3.npy".format(index_dir,count)
-    files_fname = "{}/{}.files".format(index_dir,count)
+    feat_fname = "{}/feats_pool3.npy".format(index_dir)
+    files_fname = "{}/files".format(index_dir)
     logging.info("storing in {}".format(index_dir))
     with open(feat_fname,'w') as feats:
         np.save(feats,np.array(features))

@@ -2,11 +2,9 @@ import os,sys,logging,time,shutil
 from fabric.state import env
 from fabric.api import env,local,run,sudo,put,cd,lcd,puts,task,get,hide
 from settings import DATA_PATH,INDEX_PATH
-try:
-    import inception
-except ImportError:
-    print "could not import main module limited to boostrap actions"
-    pass
+import tensorflow
+from inception import *
+
 
 from settings import USER,private_key,HOST
 env.user = USER
@@ -58,11 +56,6 @@ def index():
     Index images
     """
     logging.info("Starting with images present in {} storing index in {}".format(DATA_PATH,INDEX_PATH))
-    try:
-        os.mkdir(INDEX_PATH)
-    except:
-        print "Could not created {}, if its on /mnt/ have you set correct permissions?".format(INDEX_PATH)
-        raise ValueError
     inception.load_network()
     count = 0
     start = time.time()
